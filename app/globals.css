@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #0e0e0e;
+  --color-foreground: #ffffff;
+  --color-primary: #ff8f73;
+  --color-primary-dim: #dc3300;
+  --color-primary-fixed: #ff7856;
+  --color-primary-fixed-dim: #ff5c34;
+  --color-primary-container: #ff7856;
+  --color-on-primary: #5e1000;
+  --color-on-primary-fixed: #000000;
+  --color-on-primary-container: #490b00;
+  --color-on-primary-fixed-variant: #5a0f00;
+  --color-surface: #0e0e0e;
+  --color-surface-dim: #0e0e0e;
+  --color-surface-bright: #2c2c2c;
+  --color-surface-container: #1a1919;
+  --color-surface-container-low: #131313;
+  --color-surface-container-high: #201f1f;
+  --color-surface-container-highest: #262626;
+  --color-surface-container-lowest: #000000;
+  --color-surface-variant: #262626;
+  --color-surface-tint: #ff8f73;
+  --color-on-surface: #ffffff;
+  --color-on-surface-variant: #adaaaa;
+  --color-on-background: #ffffff;
+  --color-secondary: #e5e2e1;
+  --color-secondary-dim: #d6d4d3;
+  --color-secondary-container: #474746;
+  --color-secondary-fixed: #e5e2e1;
+  --color-on-secondary: #525151;
+  --color-on-secondary-container: #d2d0cf;
+  --color-tertiary: #e9aaff;
+  --color-tertiary-dim: #d28aee;
+  --color-tertiary-container: #e197fc;
+  --color-outline: #767575;
+  --color-outline-variant: #484847;
+  --color-inverse-surface: #fcf9f8;
+  --color-inverse-primary: #b52900;
+  --color-inverse-on-surface: #565555;
+  --color-error: #ff6e84;
+  --color-error-dim: #d73357;
+  --color-error-container: #a70138;
+  --color-on-error: #490013;
+  --color-on-error-container: #ffb2b9;
+
+  --font-headline: "Space Grotesk", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  --font-label: "Space Grotesk", sans-serif;
+
+  --radius-sm: 0px;
+  --radius: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Custom utilities */
+.kinetic-gradient {
+  background: linear-gradient(135deg, #ff8f73 0%, #dc3300 100%);
+}
+
+.glass-panel {
+  background: rgba(38, 38, 38, 0.6);
+  backdrop-filter: blur(20px);
+}
+
+.glass-overlay {
+  background: rgba(38, 38, 38, 0.6);
+  backdrop-filter: blur(20px);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(255, 143, 115, 0.4);
+}
+
+.carbon-pattern {
+  background-color: #0e0e0e;
+  background-image: linear-gradient(45deg, #131313 25%, transparent 25%),
+    linear-gradient(-45deg, #131313 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #131313 75%),
+    linear-gradient(-45deg, transparent 75%, #131313 75%);
+  background-size: 4px 4px;
+}
+
+/* Masonry Grid */
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 200px;
+  gap: 1.5rem;
+}
+.masonry-item-tall { grid-row: span 3; }
+.masonry-item-wide { grid-column: span 2; grid-row: span 2; }
+.masonry-item-square { grid-row: span 2; }
+
+@media (max-width: 768px) {
+  .masonry-item-wide { grid-column: span 1; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0e0e0e; }
+::-webkit-scrollbar-thumb { background: #262626; }
+::-webkit-scrollbar-thumb:hover { background: #ff8f73; }
+
+/* Infinite scroll animation */
+@keyframes infinite-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-infinite-scroll {
+  animation: infinite-scroll 40s linear infinite;
+}
+
+/* Selection */
+::selection {
+  background: #ff8f73;
+  color: #000000;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0e0e0e;
+  color: #ffffff;
+  font-family: "Manrope", sans-serif;
 }

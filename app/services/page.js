@@ -1,0 +1,220 @@
+import Image from "next/image";
+import Link from "next/link";
+
+export const metadata = {
+  title: "Services | Black Bullet Garage Performance",
+  description:
+    "ECU programming, advanced diagnostics, mechanical repair, electrical systems, performance tuning, and custom exhaust solutions in Dubai.",
+};
+
+const services = [
+  {
+    num: "01",
+    title: "ECU Programming",
+    img: "/images/service-ecu.jpg",
+    alt: "High-tech engine control unit with wiring",
+    desc: "Bespoke engine remapping for ultimate power and efficiency.",
+    active: true,
+    slug: "ecu-programming",
+  },
+  {
+    num: "02",
+    title: "Advanced Diagnostics",
+    img: "/images/service-diag.jpg",
+    alt: "Digital diagnostic tool plugged into car",
+    slug: "ecu-programming",
+  },
+  {
+    num: "03",
+    title: "Mechanical Repair",
+    img: "/images/service-mech.jpg",
+    alt: "Mechanic working on high performance engine",
+    slug: "mechanical-electrical",
+  },
+  {
+    num: "04",
+    title: "Electrical Systems",
+    img: "/images/service-elec.jpg",
+    alt: "Complex electrical wiring and circuit boards",
+    slug: "mechanical-electrical",
+  },
+  {
+    num: "05",
+    title: "Performance Tuning",
+    img: "/images/service-perf.jpg",
+    alt: "Racing car on a dynamometer",
+    slug: "ecu-programming",
+  },
+  {
+    num: "06",
+    title: "Custom Exhaust",
+    img: "/images/service-exhaust.jpg",
+    alt: "Titanium exhaust pipe with blue heat tint",
+    slug: "mechanical-electrical",
+  },
+];
+
+export default function ServicesPage() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="px-6 lg:px-20 pt-28 md:pt-32 pb-12 bg-surface-dim relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <span className="font-label text-primary font-bold tracking-[0.2em] uppercase text-sm block mb-4">
+            Mastering Precision
+          </span>
+          <h1 className="font-headline text-4xl md:text-5xl lg:text-7xl font-black tracking-widest uppercase mb-6 leading-none">
+            Performance <br />
+            <span className="text-primary-dim">Solutions</span>
+          </h1>
+          <p className="max-w-2xl text-on-surface-variant text-lg leading-relaxed">
+            We push the boundaries of automotive engineering. From Stage 3 ECU
+            calibrations to complete mechanical overhauls, our garage is a temple
+            for the speed-obsessed.
+          </p>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="px-6 lg:px-20 py-12 md:py-20 bg-surface">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
+          {services.map((s) => (
+            <Link
+              href={`/services/${s.slug}`}
+              key={s.num}
+              className="group relative aspect-[4/5] bg-surface-container overflow-hidden border border-outline-variant/10 cursor-pointer"
+            >
+              <Image
+                src={s.img}
+                alt={s.alt}
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/50 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full z-10">
+                <span className={`font-label text-xs font-bold tracking-[0.3em] uppercase mb-2 block transition-colors ${s.active ? "text-primary" : "text-on-surface-variant group-hover:text-primary"}`}>
+                  Service {s.num}
+                </span>
+                <h3 className="font-headline text-xl md:text-2xl font-bold uppercase mb-4 text-white">
+                  {s.title}
+                </h3>
+                <div className={`h-1 w-12 group-hover:w-full transition-all duration-500 ${s.active ? "bg-primary" : "bg-white group-hover:bg-primary"}`} />
+                {s.desc && (
+                  <p className="mt-4 text-on-surface-variant text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-2">
+                    {s.desc}
+                  </p>
+                )}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ECU Detail */}
+      <section className="bg-surface-dim pt-20 md:pt-32 pb-24 md:pb-40">
+        <div className="max-w-7xl mx-auto px-6 lg:px-20 grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16">
+          <div className="lg:col-span-7">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="h-px w-20 bg-primary" />
+              <span className="font-label text-primary font-bold tracking-widest uppercase text-sm">
+                Service Focus
+              </span>
+            </div>
+            <h2 className="font-headline text-4xl md:text-5xl font-black uppercase mb-8 md:mb-10 leading-tight">
+              ECU Programming <br />
+              &amp; <span className="text-primary">Diagnostics</span>
+            </h2>
+            <div className="space-y-6 text-on-surface-variant text-lg leading-relaxed">
+              <p>
+                Our ECU programming service is not a simple &quot;off-the-shelf&quot;
+                flash. We provide custom calibration designed specifically for
+                your vehicle&apos;s hardware configuration, fuel grade, and desired
+                performance characteristics.
+              </p>
+              <p>
+                Leveraging state-of-the-art diagnostic equipment, we interface
+                directly with your vehicle&apos;s brain to unlock hidden potential,
+                improve throttle response, and optimize torque curves while
+                maintaining strict safety parameters.
+              </p>
+            </div>
+            <div className="mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              <div className="bg-surface-container p-6 border-l-4 border-primary">
+                <h4 className="font-label font-bold text-white uppercase text-sm mb-2 tracking-wider">
+                  Dyno Proven
+                </h4>
+                <p className="text-on-surface-variant text-sm">
+                  Every tune is validated for consistent power delivery and
+                  thermal efficiency.
+                </p>
+              </div>
+              <div className="bg-surface-container p-6 border-l-4 border-primary">
+                <h4 className="font-label font-bold text-white uppercase text-sm mb-2 tracking-wider">
+                  OEM+ Reliability
+                </h4>
+                <p className="text-on-surface-variant text-sm">
+                  Software updates that maintain factory safety protocols and
+                  emissions standards.
+                </p>
+              </div>
+            </div>
+            <div className="mt-12 md:mt-16">
+              <Link
+                href="/booking"
+                className="w-full md:w-auto px-12 py-5 bg-gradient-to-tr from-primary-dim to-primary text-on-primary-fixed font-headline font-black uppercase tracking-[0.15em] text-lg hover:brightness-110 transition-all flex items-center justify-center gap-3 inline-flex"
+              >
+                Book This Service
+                <span className="material-symbols-outlined">trending_flat</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            <div className="relative aspect-square bg-surface-container-highest">
+              <Image
+                src="/images/ecu-laptop.jpg"
+                alt="Laptop displaying 3D fuel map tuning software"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+              <div className="absolute top-4 left-4 glass-overlay px-4 py-2 flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="font-label text-xs font-bold text-white uppercase tracking-tighter">
+                  Live Telemetry
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 md:py-32 bg-surface text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-50" />
+        <div className="relative z-10 max-w-4xl mx-auto px-6">
+          <h2 className="font-headline text-3xl md:text-4xl lg:text-6xl font-black uppercase mb-8 leading-tight">
+            Ready to <span className="text-glow text-primary">Elevate</span>{" "}
+            Your Drive?
+          </h2>
+          <div className="flex flex-col md:flex-row justify-center gap-6">
+            <Link
+              href="/booking"
+              className="bg-primary text-on-primary-fixed px-10 py-4 font-headline font-bold uppercase tracking-widest hover:scale-105 transition-transform inline-block"
+            >
+              Schedule Consultation
+            </Link>
+            <Link
+              href="/services"
+              className="border border-outline px-10 py-4 font-headline font-bold uppercase tracking-widest hover:bg-surface-container-highest transition-colors inline-block"
+            >
+              View Pricing
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
