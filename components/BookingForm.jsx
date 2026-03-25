@@ -103,191 +103,254 @@ export default function BookingForm() {
             style={{ width: `${((activeStep + 1) / 4) * 100}%` }}
           />
 
-          <div className="space-y-10 md:space-y-12">
+          <div className="pt-8 min-h-[400px]">
             {/* Step 1: Personal */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              <div className="space-y-2">
-                <label className="font-label font-bold text-xs text-on-surface-variant uppercase tracking-widest">
-                  Pilot Name
-                </label>
-                <input
-                  className="w-full bg-surface-container-highest border-none text-white p-4 font-headline placeholder:text-outline-variant focus:ring-1 focus:ring-primary transition-all"
-                  placeholder="FULL NAME"
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  aria-label="Full name"
-                />
+            {activeStep === 0 && (
+              <div className="flex flex-col h-full justify-between">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8">
+                  <div className="space-y-2">
+                    <label className="font-label font-bold text-xs text-on-surface-variant uppercase tracking-widest">
+                      Pilot Name
+                    </label>
+                    <input
+                      className="w-full bg-surface-container-highest border-none text-white p-4 font-headline placeholder:text-outline-variant focus:ring-1 focus:ring-primary transition-all"
+                      placeholder="FULL NAME"
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
+                      aria-label="Full name"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="font-label font-bold text-xs text-on-surface-variant uppercase tracking-widest">
+                      Contact Signal
+                    </label>
+                    <input
+                      className="w-full bg-surface-container-highest border-none text-white p-4 font-headline placeholder:text-outline-variant focus:ring-1 focus:ring-primary transition-all"
+                      placeholder="EMAIL ADDRESS"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                      aria-label="Email address"
+                    />
+                  </div>
+                </div>
+                <div className="flex justify-end pt-8 border-t border-outline-variant/20 mt-auto">
+                  <button
+                    type="button"
+                    onClick={() => setActiveStep(1)}
+                    className="bg-primary text-on-primary-fixed px-10 py-4 font-headline font-bold uppercase tracking-widest text-sm hover:brightness-110 transition-all flex items-center gap-2"
+                  >
+                    Next Stage
+                    <span className="material-symbols-outlined text-lg">arrow_forward</span>
+                  </button>
+                </div>
               </div>
-              <div className="space-y-2">
-                <label className="font-label font-bold text-xs text-on-surface-variant uppercase tracking-widest">
-                  Contact Signal
-                </label>
-                <input
-                  className="w-full bg-surface-container-highest border-none text-white p-4 font-headline placeholder:text-outline-variant focus:ring-1 focus:ring-primary transition-all"
-                  placeholder="EMAIL ADDRESS"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  aria-label="Email address"
-                />
-              </div>
-            </div>
+            )}
 
             {/* Step 2: Vehicle */}
-            <div className="pt-8 md:pt-12 border-t border-outline-variant/20">
-              <h3 className="font-headline text-xl md:text-2xl font-black text-white mb-6 md:mb-8 uppercase italic tracking-tight">
-                Machine Specifications
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {vehicleTypes.map((v, i) => (
+            {activeStep === 1 && (
+              <div className="flex flex-col h-full justify-between">
+                <div className="mb-8">
+                  <h3 className="font-headline text-xl md:text-2xl font-black text-white mb-6 md:mb-8 uppercase italic tracking-tight">
+                    Machine Specifications
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {vehicleTypes.map((v, i) => (
+                      <button
+                        key={v.label}
+                        type="button"
+                        onClick={() => setSelectedVehicle(i)}
+                        className={`p-5 md:p-6 transition-all cursor-pointer text-left ${
+                          selectedVehicle === i
+                            ? "bg-surface-container-highest border border-primary"
+                            : "bg-surface-container-low border border-transparent hover:border-outline-variant/50"
+                        }`}
+                      >
+                        <span
+                          className={`material-symbols-outlined mb-4 ${
+                            selectedVehicle === i
+                              ? "text-primary"
+                              : "text-on-surface-variant"
+                          }`}
+                        >
+                          {v.icon}
+                        </span>
+                        <p
+                          className={`font-headline font-bold uppercase text-sm ${
+                            selectedVehicle === i
+                              ? "text-white"
+                              : "text-on-surface-variant"
+                          }`}
+                        >
+                          {v.label}
+                        </p>
+                      </button>
+                    ))}
+                  </div>
+                  <input
+                    className="mt-6 w-full bg-surface-container-highest border-none text-white p-4 font-headline placeholder:text-outline-variant focus:ring-1 focus:ring-primary transition-all"
+                    placeholder="MODEL YEAR & ENGINE SPEC (E.G. 2023 HURACAN STO)"
+                    type="text"
+                    value={formData.model}
+                    onChange={(e) =>
+                      setFormData({ ...formData, model: e.target.value })
+                    }
+                    aria-label="Vehicle model"
+                  />
+                </div>
+                <div className="flex justify-between items-center pt-8 border-t border-outline-variant/20 mt-auto">
                   <button
-                    key={v.label}
                     type="button"
-                    onClick={() => setSelectedVehicle(i)}
-                    className={`p-5 md:p-6 transition-all cursor-pointer text-left ${
-                      selectedVehicle === i
-                        ? "bg-surface-container-highest"
-                        : "bg-surface-container-low opacity-60 hover:opacity-100 border border-transparent hover:border-primary"
-                    }`}
+                    onClick={() => setActiveStep(0)}
+                    className="text-on-surface-variant hover:text-white font-headline font-bold uppercase tracking-widest text-sm transition-colors"
                   >
-                    <span
-                      className={`material-symbols-outlined mb-4 ${
-                        selectedVehicle === i
-                          ? "text-primary"
-                          : "text-on-surface-variant"
-                      }`}
-                    >
-                      {v.icon}
-                    </span>
-                    <p
-                      className={`font-headline font-bold uppercase text-sm ${
-                        selectedVehicle === i
-                          ? "text-white"
-                          : "text-on-surface-variant"
-                      }`}
-                    >
-                      {v.label}
-                    </p>
+                    Back
                   </button>
-                ))}
+                  <button
+                    type="button"
+                    onClick={() => setActiveStep(2)}
+                    className="bg-primary text-on-primary-fixed px-10 py-4 font-headline font-bold uppercase tracking-widest text-sm hover:brightness-110 transition-all flex items-center gap-2"
+                  >
+                    Next Stage
+                    <span className="material-symbols-outlined text-lg">arrow_forward</span>
+                  </button>
+                </div>
               </div>
-              <input
-                className="mt-6 w-full bg-surface-container-highest border-none text-white p-4 font-headline placeholder:text-outline-variant focus:ring-1 focus:ring-primary transition-all"
-                placeholder="MODEL YEAR & ENGINE SPEC (E.G. 2023 HURACAN STO)"
-                type="text"
-                value={formData.model}
-                onChange={(e) =>
-                  setFormData({ ...formData, model: e.target.value })
-                }
-                aria-label="Vehicle model"
-              />
-            </div>
+            )}
 
             {/* Step 3: Service */}
-            <div className="pt-8 md:pt-12 border-t border-outline-variant/20">
-              <h3 className="font-headline text-xl md:text-2xl font-black text-white mb-6 md:mb-8 uppercase italic tracking-tight">
-                Select Protocol
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {serviceProtocols.map((s, i) => (
+            {activeStep === 2 && (
+              <div className="flex flex-col h-full justify-between">
+                <div className="mb-8">
+                  <h3 className="font-headline text-xl md:text-2xl font-black text-white mb-6 md:mb-8 uppercase italic tracking-tight">
+                    Select Protocol
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {serviceProtocols.map((s, i) => (
+                      <button
+                        key={s.label}
+                        type="button"
+                        onClick={() => setSelectedService(i)}
+                        className={`p-5 md:p-6 text-left transition-colors cursor-pointer ${
+                          selectedService === i
+                            ? "bg-surface-container-highest border-2 border-primary"
+                            : "bg-surface-container-low border-2 border-transparent hover:bg-surface-container-highest"
+                        }`}
+                      >
+                        <div className="flex justify-between items-start mb-4">
+                          <span className={`material-symbols-outlined ${selectedService === i ? "text-primary" : "text-on-surface-variant"}`}>
+                            {s.icon}
+                          </span>
+                          {s.elite && (
+                            <span className="font-label text-[10px] bg-primary text-on-primary-fixed px-2 py-0.5 font-black uppercase">
+                              Elite
+                            </span>
+                          )}
+                        </div>
+                        <h4 className="font-headline font-bold text-white uppercase text-sm">
+                          {s.label}
+                        </h4>
+                        <p className="text-on-surface-variant text-xs mt-2 font-body">
+                          {s.desc}
+                        </p>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex justify-between items-center pt-8 border-t border-outline-variant/20 mt-auto">
                   <button
-                    key={s.label}
                     type="button"
-                    onClick={() => setSelectedService(i)}
-                    className={`p-5 md:p-6 text-left transition-colors cursor-pointer ${
-                      selectedService === i
-                        ? "bg-surface-container-highest border-l-2 border-primary"
-                        : "bg-surface-container-low hover:bg-surface-container-highest"
-                    }`}
+                    onClick={() => setActiveStep(1)}
+                    className="text-on-surface-variant hover:text-white font-headline font-bold uppercase tracking-widest text-sm transition-colors"
                   >
-                    <div className="flex justify-between items-start mb-4">
-                      <span className={`material-symbols-outlined ${selectedService === i ? "text-primary" : "text-on-surface-variant"}`}>
-                        {s.icon}
-                      </span>
-                      {s.elite && (
-                        <span className="font-label text-[10px] bg-primary text-on-primary-fixed px-2 py-0.5 font-black uppercase">
-                          Elite
-                        </span>
-                      )}
-                    </div>
-                    <h4 className="font-headline font-bold text-white uppercase text-sm">
-                      {s.label}
-                    </h4>
-                    <p className="text-on-surface-variant text-xs mt-2 font-body">
-                      {s.desc}
-                    </p>
+                    Back
                   </button>
-                ))}
+                  <button
+                    type="button"
+                    onClick={() => setActiveStep(3)}
+                    className="bg-primary text-on-primary-fixed px-10 py-4 font-headline font-bold uppercase tracking-widest text-sm hover:brightness-110 transition-all flex items-center gap-2"
+                  >
+                    Next Stage
+                    <span className="material-symbols-outlined text-lg">arrow_forward</span>
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Step 4: Date/Time */}
-            <div className="pt-8 md:pt-12 border-t border-outline-variant/20">
-              <h3 className="font-headline text-xl md:text-2xl font-black text-white mb-6 md:mb-8 uppercase italic tracking-tight">
-                Launch Window
-              </h3>
-              <div className="grid grid-cols-4 md:grid-cols-7 gap-2 mb-6 md:mb-8 text-center">
-                {days.map((day, i) => (
-                  <div
-                    key={day}
-                    className={`p-2 text-xs font-label ${
-                      i === 2 ? "text-primary font-bold" : "opacity-50"
-                    }`}
-                  >
-                    {day}
+            {activeStep === 3 && (
+              <div className="flex flex-col h-full justify-between">
+                <div className="mb-8">
+                  <h3 className="font-headline text-xl md:text-2xl font-black text-white mb-6 md:mb-8 uppercase italic tracking-tight">
+                    Launch Window
+                  </h3>
+                  <div className="grid grid-cols-4 md:grid-cols-7 gap-2 mb-6 md:mb-8 text-center">
+                    {days.map((day, i) => (
+                      <div
+                        key={day}
+                        className={`p-2 text-xs font-label ${
+                          i === 2 ? "text-primary font-bold" : "opacity-50"
+                        }`}
+                      >
+                        {day}
+                      </div>
+                    ))}
+                    {dates.map((date, i) => (
+                      <button
+                        key={date}
+                        type="button"
+                        onClick={() => setSelectedDate(i)}
+                        className={`p-3 font-headline text-sm transition-colors ${
+                          selectedDate === i
+                            ? "bg-surface-bright border-b-2 border-primary text-white"
+                            : "bg-surface-container-highest hover:bg-surface-bright cursor-pointer"
+                        } ${i < 2 ? "opacity-20" : ""}`}
+                      >
+                        {date}
+                      </button>
+                    ))}
                   </div>
-                ))}
-                {dates.map((date, i) => (
-                  <button
-                    key={date}
-                    type="button"
-                    onClick={() => setSelectedDate(i)}
-                    className={`p-3 font-headline text-sm transition-colors ${
-                      selectedDate === i
-                        ? "bg-surface-bright border-b-2 border-primary text-white"
-                        : "bg-surface-container-highest hover:bg-surface-bright cursor-pointer"
-                    } ${i < 2 ? "opacity-20" : ""}`}
-                  >
-                    {date}
-                  </button>
-                ))}
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {timeSlots.map((time, i) => (
-                  <button
-                    key={time}
-                    type="button"
-                    onClick={() => setSelectedTime(i)}
-                    className={`py-3 px-4 font-headline text-xs font-bold transition-all ${
-                      selectedTime === i
-                        ? "bg-primary text-on-primary-fixed shadow-[0_0_20px_rgba(255,143,115,0.3)]"
-                        : "bg-surface-container-highest text-white hover:bg-primary hover:text-on-primary-fixed"
-                    }`}
-                  >
-                    {time}
-                  </button>
-                ))}
-              </div>
-            </div>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    {timeSlots.map((time, i) => (
+                      <button
+                        key={time}
+                        type="button"
+                        onClick={() => setSelectedTime(i)}
+                        className={`py-3 px-4 font-headline text-xs font-bold transition-all ${
+                          selectedTime === i
+                            ? "bg-primary text-on-primary-fixed shadow-[0_0_20px_rgba(255,143,115,0.3)]"
+                            : "bg-surface-container-highest text-white hover:bg-primary hover:text-on-primary-fixed cursor-pointer"
+                        }`}
+                      >
+                        {time}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-            {/* CTA */}
-            <div className="pt-8 md:pt-12 flex flex-col md:flex-row items-center justify-between gap-6">
-              <p className="text-on-surface-variant text-xs max-w-sm">
-                By proceeding, you agree to our performance service terms and
-                vehicle diagnostic protocols.
-              </p>
-              <button
-                type="submit"
-                className="w-full md:w-auto px-10 md:px-12 py-5 bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed font-headline font-black text-lg md:text-xl uppercase tracking-tighter hover:scale-105 active:scale-95 transition-all shadow-2xl"
-              >
-                INITIATE BOOKING
-              </button>
-            </div>
+                {/* CTA */}
+                <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-outline-variant/20 mt-auto">
+                  <button
+                    type="button"
+                    onClick={() => setActiveStep(2)}
+                    className="text-on-surface-variant hover:text-white font-headline font-bold uppercase tracking-widest text-sm transition-colors"
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="submit"
+                    className="w-full md:w-auto px-10 md:px-12 py-5 bg-gradient-to-r from-primary to-primary-dim text-on-primary-fixed font-headline font-black text-lg md:text-xl uppercase tracking-tighter hover:scale-105 active:scale-95 transition-all shadow-2xl"
+                  >
+                    INITIATE BOOKING
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </form>
 

@@ -41,45 +41,47 @@ const serviceSummaries = [
 
 export default function ServiceCard() {
   return (
-    <section className="py-20 md:py-32 px-6 md:px-24 bg-surface">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-20 gap-4">
-        <div>
-          <h2 className="font-headline font-black text-4xl md:text-6xl uppercase tracking-tighter">
-            Performance <br />
-            <span className="text-primary">Ecosystem</span>
-          </h2>
-        </div>
-        <div className="hidden md:block pb-4 border-b border-outline w-1/3" />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-outline-variant/20">
-        {serviceSummaries.map((service, index) => (
-          <div
-            key={service.slug}
-            className="bg-surface p-8 md:p-12 hover:bg-surface-container transition-all group relative overflow-hidden flex flex-col items-start"
-          >
-            <div className="absolute top-0 right-0 p-6 md:p-8 opacity-5 font-headline font-black text-7xl md:text-8xl">
-              {String(index + 1).padStart(2, "0")}
-            </div>
-            <span className="material-symbols-outlined text-3xl md:text-4xl mb-6 text-primary">
-              {service.icon}
-            </span>
-            <h4 className="font-headline font-bold text-lg md:text-xl mb-4 uppercase text-white">
-              {service.title}
-            </h4>
-            <p className="text-on-surface-variant mb-8 font-body flex-1">
-              {service.description}
-            </p>
-            <Link
-              href={`/services/${service.slug}`}
-              className="mt-auto text-primary font-headline font-bold uppercase tracking-widest text-xs flex items-center gap-2 group-hover:gap-4 transition-all"
-            >
-              Explore{" "}
-              <span className="material-symbols-outlined text-sm">
-                arrow_forward
-              </span>
-            </Link>
+    <section className="py-16 md:py-20 bg-surface">
+      <div className="max-w-[1200px] mx-auto px-4 lg:px-6">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-4">
+          <div>
+            <h2 className="font-headline font-black text-[clamp(28px,4vw,48px)] uppercase tracking-tighter">
+              Performance <br />
+              <span className="text-primary">Ecosystem</span>
+            </h2>
           </div>
-        ))}
+          <div className="hidden md:block pb-4 border-b border-outline w-1/3" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-outline-variant/20">
+          {serviceSummaries.map((service, index) => (
+            <div
+              key={service.slug}
+              className="bg-surface p-8 border hover:bg-surface-container border-transparent hover:border-outline-variant/30 transition-all group relative overflow-hidden flex flex-col items-start"
+            >
+              <div className="absolute top-0 right-0 p-6 md:p-8 opacity-5 font-headline font-black text-[clamp(48px,5vw,72px)]">
+                {String(index + 1).padStart(2, "0")}
+              </div>
+              <span className="material-symbols-outlined text-[clamp(28px,2.5vw,36px)] mb-6 text-primary">
+                {service.icon}
+              </span>
+              <h4 className="font-headline font-bold text-[clamp(16px,1.5vw,20px)] mb-4 uppercase text-white">
+                {service.title}
+              </h4>
+              <p className="text-on-surface-variant mb-8 font-body flex-1 text-[clamp(14px,1.2vw,18px)]">
+                {service.description}
+              </p>
+              <Link
+                href={`/services/${service.slug}`}
+                className="mt-auto text-primary font-headline font-bold uppercase tracking-widest text-xs flex items-center gap-2 group-hover:gap-4 transition-all"
+              >
+                Explore{" "}
+                <span className="material-symbols-outlined text-sm">
+                  arrow_forward
+                </span>
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

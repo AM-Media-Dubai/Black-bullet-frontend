@@ -8,7 +8,7 @@ const navItems = [
   { icon: "calendar_today", label: "Bookings", href: "/admin/bookings" },
   { icon: "build", label: "Services", href: "/admin/services" },
   { icon: "article", label: "Blog", href: "/admin/blog" },
-  { icon: "image", label: "Gallery", href: "/admin" },
+  { icon: "edit_note", label: "Website Content", href: "/admin/content" },
   { icon: "settings", label: "Settings", href: "/admin" },
 ];
 
