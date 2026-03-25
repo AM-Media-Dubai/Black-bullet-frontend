@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Hero() {
+export default function Hero({ data }) {
   return (
-    <section className="relative h-screen w-full flex items-center overflow-hidden">
+    <section className="relative min-h-[85vh] w-full flex items-center pt-24 md:pt-32 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -17,17 +17,24 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 px-6 md:px-24 w-full">
-        <div className="max-w-4xl">
-          <h1 className="font-headline font-black text-5xl md:text-7xl lg:text-8xl leading-none tracking-tighter mb-8 uppercase">
-            THE KINETIC{" "}
-            <span className="text-primary italic">MONOLITH</span> OF DUBAI
-            PERFORMANCE
-          </h1>
-          <div className="flex flex-col md:flex-row gap-4 mt-12">
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4 lg:px-6">
+        <div className="max-w-3xl">
+          {data?.title ? (
+            <h1 
+              className="font-headline font-black text-[clamp(48px,6vw,96px)] leading-[1.1] tracking-tighter mb-6 uppercase"
+              dangerouslySetInnerHTML={{ __html: data.title }}
+            />
+          ) : (
+            <h1 className="font-headline font-black text-[clamp(48px,6vw,96px)] leading-[1.1] tracking-tighter mb-6 uppercase">
+              THE KINETIC{" "}
+              <span className="text-primary italic">MONOLITH</span> OF DUBAI
+              PERFORMANCE
+            </h1>
+          )}
+          <div className="flex flex-col md:flex-row gap-4 mt-8 md:mt-10">
             <Link
               href="/booking"
-              className="kinetic-gradient text-on-primary-fixed font-headline font-black uppercase tracking-widest text-base md:text-lg px-8 md:px-12 py-5 shadow-[0_0_30px_rgba(255,143,115,0.3)] text-center hover:brightness-110 transition-all"
+              className="kinetic-gradient text-on-primary-fixed font-headline font-black uppercase tracking-widest text-sm md:text-base px-8 py-4 shadow-[0_0_30px_rgba(255,143,115,0.3)] text-center hover:brightness-110 transition-all inline-block"
             >
               Book Now
             </Link>
@@ -35,9 +42,9 @@ export default function Hero() {
               href="https://wa.me/971000000000"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-secondary-container/20 border border-outline-variant/30 backdrop-blur-md text-white font-headline font-bold uppercase tracking-widest text-base md:text-lg px-8 md:px-12 py-5 flex items-center justify-center gap-3 hover:bg-white/10 transition-all"
+              className="bg-secondary-container/20 border border-outline-variant/30 backdrop-blur-md text-white font-headline font-bold uppercase tracking-widest text-sm md:text-base px-8 py-4 flex items-center justify-center gap-3 hover:bg-white/10 transition-all inline-flex"
             >
-              <span className="material-symbols-outlined">chat</span>
+              <span className="material-symbols-outlined text-[1.2em]">chat</span>
               WhatsApp Us
             </Link>
           </div>

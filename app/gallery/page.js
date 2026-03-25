@@ -10,13 +10,13 @@ export const metadata = {
 
 export default function GalleryPage() {
   return (
-    <div className="pt-28 md:pt-32 pb-16 md:pb-24 px-4 md:px-6 lg:px-12 max-w-[1600px] mx-auto">
+    <div className="pt-24 md:pt-28 pb-12 md:pb-16 px-4 lg:px-6 max-w-[1200px] mx-auto">
       {/* Header */}
-      <header className="mb-16 md:mb-20">
-        <h1 className="font-headline text-4xl md:text-5xl lg:text-7xl font-black uppercase tracking-tighter mb-4">
+      <header className="mb-12 md:mb-16">
+        <h1 className="font-headline text-[clamp(48px,6vw,96px)] font-black uppercase tracking-tighter mb-4 leading-none">
           THE PROJECT <span className="text-primary">ARCHIVE</span>
         </h1>
-        <p className="font-body text-on-surface-variant max-w-2xl text-lg">
+        <p className="font-body text-on-surface-variant max-w-2xl text-[clamp(14px,1.2vw,18px)]">
           Witness the evolution of performance. From bespoke aerodynamic kits to
           radical engine remapping, explore our most prestigious Dubai builds.
         </p>
@@ -37,17 +37,17 @@ export default function GalleryPage() {
             Featured Build
           </div>
           <div className="absolute bottom-6 md:bottom-8 left-6 md:left-8">
-            <h3 className="font-headline text-2xl md:text-3xl font-black italic uppercase tracking-tighter">
+            <h3 className="font-headline text-[clamp(24px,2.5vw,36px)] font-black italic uppercase tracking-tighter">
               F8 TRIBUTO &quot;ONYX&quot;
             </h3>
-            <p className="text-on-surface-variant text-sm font-medium tracking-wide">
+            <p className="text-on-surface-variant text-[clamp(12px,1vw,14px)] font-medium tracking-wide">
               Full Satin Black Wrap &amp; Stage 2 Tune
             </p>
           </div>
           {/* Slider mockup */}
           <div className="absolute inset-y-0 right-1/2 w-1 bg-primary z-10 hidden md:block">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-primary text-on-primary-fixed flex items-center justify-center rounded-full shadow-2xl">
-              <span className="material-symbols-outlined text-sm">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 md:w-10 md:h-10 bg-primary text-on-primary-fixed flex items-center justify-center rounded-full shadow-2xl">
+              <span className="material-symbols-outlined text-[1.2rem]">
                 unfold_more
               </span>
             </div>
@@ -57,30 +57,30 @@ export default function GalleryPage() {
         <div className="grid grid-cols-2 gap-4 md:gap-6">
           {/* Stats Cards */}
           <div className="bg-surface-container-high p-6 md:p-8 flex flex-col justify-center border-l-4 border-primary">
-            <span className="font-label text-primary font-bold text-xs uppercase tracking-[0.2em] mb-3 md:mb-4">
+            <span className="font-label text-primary font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-2 md:mb-4">
               Performance Gains
             </span>
-            <div className="text-4xl md:text-5xl font-headline font-black italic mb-2">
+            <div className="text-[clamp(36px,4vw,64px)] font-headline font-black italic mb-1 md:mb-2 leading-none">
               +145
-              <span className="text-xl italic font-normal text-on-surface-variant ml-2">
+              <span className="text-[clamp(16px,2vw,24px)] italic font-normal text-on-surface-variant ml-2">
                 HP
               </span>
             </div>
-            <p className="text-on-surface-variant text-xs uppercase font-bold tracking-widest">
+            <p className="text-on-surface-variant text-[10px] md:text-xs uppercase font-bold tracking-widest mt-2">
               ECU Remapping &amp; Exhaust
             </p>
           </div>
           <div className="bg-surface-container-high p-6 md:p-8 flex flex-col justify-center border-l-4 border-tertiary">
-            <span className="font-label text-tertiary font-bold text-xs uppercase tracking-[0.2em] mb-3 md:mb-4">
+            <span className="font-label text-tertiary font-bold text-[10px] md:text-xs uppercase tracking-[0.2em] mb-2 md:mb-4">
               Torque Increase
             </span>
-            <div className="text-4xl md:text-5xl font-headline font-black italic mb-2">
+            <div className="text-[clamp(36px,4vw,64px)] font-headline font-black italic mb-1 md:mb-2 leading-none">
               850
-              <span className="text-xl italic font-normal text-on-surface-variant ml-2">
+              <span className="text-[clamp(16px,2vw,24px)] italic font-normal text-on-surface-variant ml-2">
                 NM
               </span>
             </div>
-            <p className="text-on-surface-variant text-xs uppercase font-bold tracking-widest">
+            <p className="text-on-surface-variant text-[10px] md:text-xs uppercase font-bold tracking-widest mt-2">
               Precision Tuning
             </p>
           </div>
@@ -113,21 +113,21 @@ export default function GalleryPage() {
       <GalleryGrid />
 
       {/* CTA */}
-      <section className="mt-20 md:mt-32 py-16 md:py-24 bg-surface-container flex flex-col items-center text-center px-6 border-t border-white/5">
-        <h2 className="font-headline text-3xl md:text-4xl lg:text-6xl font-black italic uppercase tracking-tighter mb-8 max-w-4xl">
+      <section className="mt-16 md:mt-24 py-12 md:py-16 bg-surface-container flex flex-col items-center text-center px-4 border-t border-white/5 rounded-none max-w-full">
+        <h2 className="font-headline text-[clamp(28px,4vw,48px)] font-black italic uppercase tracking-tighter mb-8 max-w-3xl">
           Ready to transform your machine into a{" "}
           <span className="text-primary">masterpiece?</span>
         </h2>
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-6 w-full md:w-auto">
           <Link
             href="/booking"
-            className="bg-primary text-on-primary-fixed px-10 md:px-12 py-5 font-label font-black uppercase tracking-[0.2em] text-sm hover:translate-y-[-4px] transition-transform inline-block"
+            className="bg-primary text-on-primary-fixed px-8 py-4 font-label font-black uppercase tracking-[0.2em] text-[clamp(12px,1vw,14px)] hover:translate-y-[-4px] transition-transform inline-block w-full md:w-auto"
           >
             Start Custom Project
           </Link>
           <Link
             href="/services"
-            className="bg-transparent border border-outline px-10 md:px-12 py-5 font-label font-black uppercase tracking-[0.2em] text-sm hover:bg-white hover:text-black transition-all inline-block"
+            className="bg-transparent border border-outline px-8 py-4 font-label font-black uppercase tracking-[0.2em] text-[clamp(12px,1vw,14px)] hover:bg-white hover:text-black transition-all inline-block w-full md:w-auto"
           >
             View Pricing
           </Link>

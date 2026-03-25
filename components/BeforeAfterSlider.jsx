@@ -33,18 +33,18 @@ export default function BeforeAfterSlider() {
   };
 
   return (
-    <section className="py-20 md:py-32 bg-surface-container-lowest overflow-hidden">
-      <div className="px-6 md:px-24 mb-12 md:mb-16">
-        <h2 className="font-headline font-black text-4xl md:text-5xl uppercase tracking-tighter">
+    <section className="py-16 md:py-20 bg-surface-container-lowest overflow-hidden">
+      <div className="max-w-[1200px] mx-auto px-4 lg:px-6 mb-12 md:mb-16">
+        <h2 className="font-headline font-black text-[clamp(28px,4vw,48px)] uppercase tracking-tighter">
           Paint <span className="text-primary">Restoration</span>
         </h2>
-        <p className="text-on-surface-variant mt-4 font-body text-lg">
+        <p className="text-on-surface-variant mt-4 font-body text-[clamp(14px,1.2vw,18px)]">
           Swipe to witness the evolution from desert-worn to showroom-flawless.
         </p>
       </div>
       <div
         ref={containerRef}
-        className="relative w-full h-[400px] md:h-[716px] cursor-col-resize select-none"
+        className="relative w-full h-[350px] md:h-[600px] cursor-col-resize select-none"
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}

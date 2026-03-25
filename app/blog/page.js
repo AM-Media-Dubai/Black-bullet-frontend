@@ -53,7 +53,7 @@ export default function BlogPage() {
   return (
     <>
       {/* Hero Article Header */}
-      <header className="relative w-full h-[500px] md:h-[716px] flex items-end pt-28 md:pt-32 overflow-hidden bg-surface-container-lowest">
+      <header className="relative w-full min-h-[70vh] flex items-end pt-28 md:pt-32 overflow-hidden bg-surface-container-lowest">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/blog-engine.jpg"
@@ -65,16 +65,16 @@ export default function BlogPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
         </div>
-        <div className="relative z-10 px-6 md:px-20 pb-12 md:pb-16 max-w-7xl mx-auto w-full">
-          <div className="flex items-center gap-4 mb-6">
-            <span className="bg-primary text-on-primary-fixed px-3 py-1 font-label font-bold text-xs uppercase tracking-widest">
+        <div className="relative z-10 px-4 lg:px-6 pb-12 md:pb-16 max-w-[1200px] mx-auto w-full">
+          <div className="flex items-center gap-4 mb-4 md:mb-6">
+            <span className="bg-primary text-on-primary-fixed px-3 py-1 font-label font-bold text-[10px] md:text-xs uppercase tracking-widest">
               Engineering
             </span>
-            <span className="text-on-surface-variant font-label text-xs uppercase tracking-widest">
+            <span className="text-on-surface-variant font-label text-[10px] md:text-xs uppercase tracking-widest">
               June 24, 2024
             </span>
           </div>
-          <h1 className="font-headline text-3xl md:text-5xl lg:text-7xl font-black text-on-surface leading-[0.9] tracking-tighter uppercase max-w-4xl mb-6 md:mb-8">
+          <h1 className="font-headline text-[clamp(36px,5vw,72px)] font-black text-on-surface leading-[0.9] tracking-tighter uppercase max-w-4xl mb-6 md:mb-8">
             The Future of ECU Remapping:{" "}
             <span className="text-primary italic">Beyond The Dyno</span>
           </h1>
@@ -97,11 +97,11 @@ export default function BlogPage() {
       </header>
 
       {/* Content */}
-      <main className="max-w-7xl mx-auto px-6 md:px-20 py-16 md:py-24 flex flex-col lg:flex-row gap-12 md:gap-20">
+      <main className="max-w-[1200px] mx-auto px-4 lg:px-6 py-12 md:py-16 flex flex-col lg:flex-row gap-8 md:gap-12">
         {/* Article Body */}
         <article className="flex-1 space-y-10 md:space-y-12">
-          <div className="space-y-6 text-on-surface-variant leading-relaxed text-base md:text-lg font-body">
-            <p className="text-on-surface font-medium text-lg md:text-xl leading-relaxed italic border-l-4 border-primary pl-6 md:pl-8 py-2">
+          <div className="space-y-6 text-on-surface-variant leading-relaxed text-[clamp(14px,1.2vw,18px)] font-body">
+            <p className="text-on-surface font-medium text-[clamp(16px,1.5vw,22px)] leading-relaxed italic border-l-4 border-primary pl-6 md:pl-8 py-2">
               In the heart of Dubai&apos;s performance culture, horsepower is no
               longer just a number—it&apos;s a digital symphony orchestrated through
               precision software engineering.
@@ -122,13 +122,13 @@ export default function BlogPage() {
             </p>
 
             {/* Callout Card */}
-            <div className="bg-surface-container p-8 md:p-12 my-10 md:my-12 relative overflow-hidden">
+            <div className="bg-surface-container p-6 md:p-10 my-10 md:my-12 relative overflow-hidden border border-outline-variant/10">
               <div className="absolute top-0 right-0 p-4 opacity-10">
                 <span className="material-symbols-outlined text-[80px] md:text-[120px]">
                   settings_input_component
                 </span>
               </div>
-              <h3 className="font-headline text-xl md:text-2xl font-bold uppercase tracking-tight text-on-surface mb-6">
+              <h3 className="font-headline text-[clamp(20px,2vw,28px)] font-bold uppercase tracking-tight text-on-surface mb-6">
                 Key Engineering Focus: Thermal Mitigation
               </h3>
               <ul className="space-y-4 font-label text-sm uppercase tracking-wide">
@@ -248,12 +248,12 @@ export default function BlogPage() {
       </main>
 
       {/* Related Articles */}
-      <section className="bg-surface-container-low py-16 md:py-24 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 md:px-20">
-          <h2 className="font-headline text-3xl md:text-4xl font-black uppercase tracking-tighter mb-10 md:mb-12">
+      <section className="bg-surface-container-low py-12 md:py-16 border-t border-white/5">
+        <div className="max-w-[1200px] mx-auto px-4 lg:px-6">
+          <h2 className="font-headline text-[clamp(28px,4vw,48px)] font-black uppercase tracking-tighter mb-8 md:mb-10">
             Related <span className="text-primary italic">Intelligence</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {relatedArticles.map((article) => (
               <div key={article.title} className="group cursor-pointer">
                 <div className="relative aspect-video overflow-hidden mb-4 md:mb-6 bg-surface-container-highest">
